@@ -2,31 +2,33 @@
 SIDEBAR TOGGLE
 ========================= */
 
-const hamburger = document.querySelector(".hamburger");
-const sidebar = document.querySelector(".sidebar");
+const hamburger = document.querySelector('.hamburger');
+const sidebar = document.querySelector('.sidebar');
 
-hamburger.addEventListener("click", () => {
-
-    sidebar.classList.toggle("active");
-
+// Toggle sidebar
+hamburger.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
 });
 
+// Close sidebar when clicking outside
+document.addEventListener('click', (e) => {
+    if (
+        !sidebar.contains(e.target) &&
+        !hamburger.contains(e.target)
+    ) {
+        sidebar.classList.remove('active');
+    }
+});
 
-/* =========================
-CLOSE SIDEBAR WHEN LINK CLICKED
-========================= */
+// Close sidebar when clicking a link (important for mobile)
+const links = document.querySelectorAll('.sidebar a');
 
-const sidebarLinks = document.querySelectorAll(".sidebar a");
-
-sidebarLinks.forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        sidebar.classList.remove("active");
-
+links.forEach(link => {
+    link.addEventListener('click', () => {
+        sidebar.classList.remove('active');
     });
-
 });
+
 
 
 /* =========================
